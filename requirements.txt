@@ -1,0 +1,5 @@
+fastapi==0.95.1
+pydantic==1.9.1
+SQLAlchemy==2.0.13
+pymysql==1.0.3
+sqlalchemy-utils==0.41.1

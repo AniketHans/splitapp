@@ -1,0 +1,250 @@
+PATHS:
+  /:
+    get:
+      summary: Greetings
+      operationId: greetings__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+
+  /all-users:
+    get:
+      summary: Get basic Info about all the users
+      operationId: getusers_all_users_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+
+  /user/{user_id}:
+    get:
+      summary: Get full info about a user by its user_id
+      operationId: getuser_user__user_id__get
+      parameters:
+        - required: true
+          schema:
+            title: User Id
+            type: integer
+          name: user_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /user:
+    post:
+      summary: Create a user
+      operationId: createuser_user_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+                - user_id (integer, required) (Generally phone Number of the user)
+                - user_name (string, required)
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /user/{user_id}/activity/{activity_id}/expense:
+    put:
+      summary: Adding expense to a specific activity by the user
+      operationId: usernewpaymemt_user__user_id__activity__activity_id__expense_put
+      parameters:
+        - required: true
+          schema:
+            title: User Id
+            type: integer
+          name: user_id
+          in: path
+        - required: true
+          schema:
+            title: Activity Id
+            type: integer
+          name: activity_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+                - payment_amount (number)
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /user/{user_id}/activity/{activity_id}/settlement:
+    put:
+      summary: Adding money for settlement in an activity by the user
+      operationId: usersettlementpaymemt_user__user_id__activity__activity_id__settlement_put
+      parameters:
+        - required: true
+          schema:
+            title: User Id
+            type: integer
+          name: user_id
+          in: path
+        - required: true
+          schema:
+            title: Activity Id
+            type: integer
+          name: activity_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              - payment_amount (number)
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                    $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /all-activity:
+    get:
+      summary: Getting all activities basic info
+      operationId: getusers_all_activity_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+
+
+  /user/{user_id}/activity:
+    post:
+      summary: Creating an activity by a specific user
+      operationId: createactivity_user__user_id__activity_post
+      parameters:
+        - required: true
+          schema:
+            title: User Id
+            type: integer
+          name: user_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+            - activity_name (string)
+            - total_amount (number, default: 0) (Optional)
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /activity/{activity_id}:
+    get:
+      summary: Getting full info about an activity
+      operationId: getactivity_activity__activity_id__get
+      parameters:
+        - required: true
+          schema:
+            title: Activity Id
+            type: integer
+          name: activity_id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+
+  /activity/{activity_id}/add-user:
+    put:
+      summary: Adding a specific user to an activity
+      operationId: addusertoactivity_activity__activity_id__add_user_put
+      parameters:
+        - required: true
+          schema:
+            title: Activity Id
+            type: integer
+          name: activity_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+                - user_id (integer, required)
+                - paid_amount (number, default: 0)     
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+
+

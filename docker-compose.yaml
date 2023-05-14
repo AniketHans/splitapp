@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:5.7
+    # command: --default-authentication-plugin=mysql_native_password  
+    ports:
+      - 32000:3306
+    restart: always
+    environment:
+      MYSQL_USER: admin
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: splitapp
+    container_name: splitapp-db
+
+  application:
+    image: anikethans/splitapp
+    restart: always
+    ports:
+      - 5005:5005
+    depends_on:
+      - database
+    
