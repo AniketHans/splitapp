@@ -18,7 +18,7 @@
     4. requirements.txt
     5. readme.txt
     6. ApisInfo.txt (For Information about the apis present)
-    7. Postman Collection
+    7. Postman Collection (Note: This postman collection also has examples for your reference to use the apis)
 
     
 
