@@ -254,7 +254,19 @@
 			"name": "Get User Data",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5005/user/9876543211",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"user",
+						"9876543211"
+					]
+				}
 			},
 			"response": [
 				{
@@ -305,7 +317,19 @@
 			"name": "Get Activity Info",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5005/activity/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"activity",
+						"1"
+					]
+				}
 			},
 			"response": [
 				{
@@ -355,8 +379,32 @@
 		{
 			"name": "Add Expense To Activity",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payment_amount\": 500\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5005/user/9876543210/activity/1/expense",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"user",
+						"9876543210",
+						"activity",
+						"1",
+						"expense"
+					]
+				}
 			},
 			"response": [
 				{
@@ -418,8 +466,32 @@
 		{
 			"name": "Add Settlement",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payment_amount\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5005/user/9876543211/activity/1/settlement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"user",
+						"9876543211",
+						"activity",
+						"1",
+						"settlement"
+					]
+				}
 			},
 			"response": [
 				{
